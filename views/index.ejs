@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHY Songbook</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>New Hope Yokohama's Songbook</h2>
+        <input type="text" id="searchInput" class="search-box" placeholder="Search songs...">
+        
+        <ul class="song-list" id="songList">
+            <% songs.forEach(song => { %>
+                <li>
+                    <a href="/song/<%= encodeURIComponent(song.filename) %>" class="<%= currentSong && currentSong.metadata.title === song.title ? 'active' : '' %>">
+                        <%= song.title %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+
+        <div class="setlist-section">
+            <div class="setlist-header">
+                <span>Setlists (Shared)</span>
+                <button onclick="openSetlistModal()" class="add-set-btn" title="New Setlist">+</button>
+            </div>
+            <div id="setlistContainer">
+                <div style="color:#666; font-size:0.8rem; padding:10px;">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <% if (currentSong) { %>
+            <div class="metadata">
+                <h1><%= currentSong.metadata.title %></h1>
+                
+                <div class="meta-info">
+                    <span class="meta-tag"><strong>Artist:</strong> <%= currentSong.metadata.artist %></span>
+                    <span class="meta-tag"><strong>Key:</strong> <span id="currentKey"><%= currentSong.metadata.key || 'C' %></span></span>
+                    <% if(currentSong.metadata.tempo) { %>
+                        <span class="meta-tag"><strong>BPM:</strong> <%= currentSong.metadata.tempo %></span>
+                    <% } %>
+                    <% if(currentSong.metadata.time) { %>
+                        <span class="meta-tag"><strong>Time:</strong> <%= currentSong.metadata.time %></span>
+                    <% } %>
+                    <div class="transpose-controls" style="margin-left: auto; display:flex; gap:15px; align-items:center;">
+    
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                            <strong style="font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px;">Transpose</strong>
+                            <div style="display: flex; gap: 5px;">
+                                <button onclick="window.applyTranspose(-1)" type="button">-</button>
+                                <span id="transposeDisplay" style="display:none;">0</span> 
+                                <button onclick="window.applyTranspose(1)" type="button">+</button>
+                            </div>
+                        </div>
+
+                        <button onclick="openSetlistModal()" class="add-to-set-btn" style="height: 100%;">Add to Setlist</button>
+
+                        <div style="border-left: 1px solid #ccc; padding-left: 15px; display:flex; gap:5px; height: 100%; align-items: center;">
+                            <button onclick="window.adjustFontSize(-2)" type="button" title="Smaller">A-</button>
+                            <button onclick="window.adjustFontSize(2)" type="button" title="Larger">A+</button>
+                            
+                            <button onclick="window.print()" type="button" title="Export PDF" style="margin-left:5px; display:flex; align-items:center; gap:5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                                    <rect x="6" y="14" width="12" height="8"></rect>
+                                </svg>
+                                PDF
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <% if(Object.keys(currentSong.metadata.extras).length > 0) { %>
+                    <div class="meta-extras">
+                        <% Object.keys(currentSong.metadata.extras).forEach(key => { %>
+                            <span class="extra-tag"><small><%= key %>:</small> <%= currentSong.metadata.extras[key] %></span>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </div>
+
+            <div class="song-container">
+                <% currentSong.renderedBlocks.forEach(block => { %>
+                    <div class="song-section <%= block.type %>">
+                        <% if (block.label) { %>
+                            <div class="section-label"><%= block.label %></div>
+                        <% } %>
+                        
+                        <div class="section-content">
+    <% block.lines.forEach(line => { %>
+        <% if (line.type === 'empty') { %>
+            <div class="empty-line"></div>
+        <% } else if (line.type === 'comment') { %>
+            <div class="comment-line"><%= line.text %></div>
+        <% } else { %>
+            <div class="line-block">
+                <div class="chords" data-original="<%= line.chords %>"><%= line.chords %></div>
+                <div class="lyrics"><%- line.lyrics %></div>
+            </div>
+        <% } %>
+    <% }) %>
+</div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <div style="display:grid; place-items:center; height:50%;">
+                <p style="color:#aaa;">Select a song from the sidebar to begin.</p>
+            </div>
+        <% } %>
+    </div>
+
+    <div id="setlistModal" class="modal">
+        <div class="modal-content">
+            <h3>Add to Setlist</h3>
+            <label>Select List:</label>
+            <select id="setlistSelect">
+                <option value="">-- Create New --</option>
+            </select>
+            
+            <label>Or Name New List:</label>
+            <input type="text" id="newSetName" placeholder="e.g. Sunday Service">
+            
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeSetlistModal()">Cancel</button>
+                <button class="btn-save" onclick="saveToSetlist()">Save Song</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. CONFIG & DATA ---
+        const SCALES = {
+            'C':  ['C', 'D', 'E', 'F', 'G', 'A', 'B'],
+            'Db': ['Db', 'Eb', 'F', 'Gb', 'Ab', 'Bb', 'C'],
+            'D':  ['D', 'E', 'F#', 'G', 'A', 'B', 'C#'],
+            'Eb': ['Eb', 'F', 'G', 'Ab', 'Bb', 'C', 'D'],
+            'E':  ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#'],
+            'F':  ['F', 'G', 'A', 'Bb', 'C', 'D', 'E'],
+            'F#': ['F#', 'G#', 'A#', 'B', 'C#', 'D#', 'E#'],
+            'Gb': ['Gb', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'F'],
+            'G':  ['G', 'A', 'B', 'C', 'D', 'E', 'F#'],
+            'Ab': ['Ab', 'Bb', 'C', 'Db', 'Eb', 'F', 'G'],
+            'A':  ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'],
+            'Bb': ['Bb', 'C', 'D', 'Eb', 'F', 'G', 'A'],
+            'B':  ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#'],
+            'C#': ['C#', 'D#', 'E#', 'F#', 'G#', 'A#', 'B#']
+        };
+        const KEY_ORDER = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
+
+        // --- 2. INITIALIZATION ---
+        // Get Key from URL (e.g. ?key=G) OR from File Metadata
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlKey = urlParams.get('key');
+        
+        let originalKey = "<%= (currentSong && currentSong.metadata.key) ? currentSong.metadata.key : 'C' %>";
+        // If the URL has a key, we treat that as our target immediately
+        let currentKeyName = urlKey || originalKey; 
+
+        // --- 3. TRANSPOSITION LOGIC ---
+        // (Same logic as before, just wrapped cleanly)
+
+        function getTransposedNote(note, oldKey, newKey) {
+            if (!SCALES[oldKey] || !SCALES[newKey]) return note;
+            
+            const oldScale = SCALES[oldKey];
+            const newScale = SCALES[newKey];
+
+            // Clean note
+            let root = note.charAt(0);
+            let acc = note.slice(1);
+
+            // Find degree
+            let degree = -1;
+            for(let i=0; i<7; i++) {
+                if (oldScale[i].startsWith(root)) { degree = i; break; }
+            }
+            if (degree === -1) return note;
+
+            // Calculate offset (e.g. difference between input "Eb" and scale note "E")
+            let offset = getPitchVal(note) - getPitchVal(oldScale[degree]);
+            if (offset > 6) offset -= 12;
+            if (offset < -6) offset += 12;
+
+            // Map to new key
+            let target = newScale[degree];
+            return applyOffset(target, offset);
+        }
+
+        function getPitchVal(n) {
+            const map = {C:0, D:2, E:4, F:5, G:7, A:9, B:11};
+            let v = map[n[0]];
+            if(n.includes('#')) v++;
+            if(n.includes('b')) v--;
+            return v;
+        }
+
+        function applyOffset(note, off) {
+            let n = note;
+            while(off > 0) { n += "#"; off--; }
+            while(off < 0) { n += "b"; off++; }
+            return n;
+        }
+
+        function transposeAll(targetKey) {
+            document.getElementById('currentKey').innerText = targetKey;
+            
+            const lines = document.querySelectorAll('.chords');
+            lines.forEach(line => {
+                if (!line.dataset.original) line.dataset.original = line.innerText;
+                const src = line.dataset.original;
+                
+                line.innerText = src.replace(/([A-G][\w\/#b+\-]*)(\s*)/g, (match, chord, spaces) => {
+                    
+                    const m = chord.match(/^([A-G][#b]*)(.*)/);
+                    if (!m) return match;
+                    
+                    const root = m[1];
+                    const rest = m[2];
+                    
+                    // --- THE SANITIZER ---
+                    // Eliminates colliding accidentals (e.g., G#b becomes G)
+                    const clean = (noteStr) => {
+                        if (!noteStr) return "";
+                        while (noteStr.includes('#b') || noteStr.includes('b#')) {
+                            noteStr = noteStr.replace(/#b|b#/g, '');
+                        }
+                        return noteStr;
+                    };
+
+                    let newChord = "";
+                    
+                    // Handle Slash Chords
+                    if (rest.includes('/')) {
+                        const parts = rest.split('/');
+                        const preSlash = parts[0];  
+                        const postSlash = parts[1]; 
+                        
+                        const bassMatch = postSlash.match(/^([A-G][#b]*)(.*)/);
+                        
+                        if (bassMatch) {
+                            const bassRoot = bassMatch[1]; 
+                            const bassRest = bassMatch[2]; 
+                            
+                            // Wrap the transposed notes in our clean() function
+                            newChord = clean(getTransposedNote(root, originalKey, targetKey)) + 
+                                       preSlash + '/' + 
+                                       clean(getTransposedNote(bassRoot, originalKey, targetKey)) + 
+                                       bassRest;
+                        } else {
+                            newChord = clean(getTransposedNote(root, originalKey, targetKey)) + preSlash + '/' + postSlash;
+                        }
+                    } else {
+                        // Standard Chords wrapped in clean()
+                        newChord = clean(getTransposedNote(root, originalKey, targetKey)) + rest;
+                    }
+
+                    // Anti-Drift Space Logic
+                    const sizeDiff = newChord.length - chord.length;
+                    let newSpaces = spaces;
+
+                    if (sizeDiff > 0) {
+                        newSpaces = spaces.slice(Math.min(sizeDiff, spaces.length));
+                    } else if (sizeDiff < 0) {
+                        newSpaces = spaces + " ".repeat(Math.abs(sizeDiff));
+                    }
+
+                    return newChord + newSpaces;
+                });
+            });
+            currentKeyName = targetKey;
+        }
+
+        
+        // Expose to buttons
+        window.applyTranspose = function(direction) {
+            let idx = KEY_ORDER.indexOf(currentKeyName);
+            if (idx === -1) idx = 0; // fallback
+            
+            let next = idx + direction;
+            if (next >= KEY_ORDER.length) next = 0;
+            if (next < 0) next = KEY_ORDER.length - 1;
+            
+            transposeAll(KEY_ORDER[next]);
+        };
+
+        // Run on load if needed
+        if (currentKeyName !== originalKey) {
+            // Give browser a split second to render
+            setTimeout(() => transposeAll(currentKeyName), 50);
+        }
+
+
+        // --- 4. SETLIST LOGIC (SERVER SIDE) ---
+
+        async function fetchSetlists() {
+            try {
+                const res = await fetch('/api/setlists');
+                return await res.json();
+            } catch (e) { console.error(e); return {}; }
+        }
+
+
+        window.deleteSetlist = async function(setName) {
+            if (!confirm(`Are you sure you want to delete the setlist "${setName}"?`)) return;
+            
+            await fetch(`/api/setlists/${encodeURIComponent(setName)}`, { method: 'DELETE' });
+            
+            // Remove from open folders memory
+            let openSets = JSON.parse(localStorage.getItem('openSetNames') || '[]');
+            openSets = openSets.filter(n => n !== setName);
+            localStorage.setItem('openSetNames', JSON.stringify(openSets));
+            
+            refreshSidebar();
+        };
+
+        window.removeSongFromSetlist = async function(setName, filename) {
+            if (!confirm(`Remove this song from "${setName}"?`)) return;
+            
+            await fetch(`/api/setlists/${encodeURIComponent(setName)}/song/${encodeURIComponent(filename)}`, { method: 'DELETE' });
+            refreshSidebar();
+        };
+
+
+        async function refreshSidebar() {
+            const sets = await fetchSetlists();
+            const container = document.getElementById('setlistContainer');
+            container.innerHTML = '';
+
+            if (Object.keys(sets).length === 0) {
+                container.innerHTML = '<div style="padding:10px; color:#666; font-size:0.8rem;">No lists yet.</div>';
+                return;
+            }
+
+            let openSets = JSON.parse(localStorage.getItem('openSetNames') || '[]');
+            const currentFilename = "<%= currentSong ? currentSong.filename : '' %>";
+
+            Object.keys(sets).forEach(name => {
+                const group = document.createElement('div');
+                group.className = 'set-group';
+
+                const containsCurrentSong = sets[name].some(s => s.filename === currentFilename);
+                if (containsCurrentSong && !openSets.includes(name)) {
+                    openSets.push(name);
+                    localStorage.setItem('openSetNames', JSON.stringify(openSets));
+                }
+                const isOpen = openSets.includes(name);
+
+                // --- NEW: Title Row with Delete Button [×] ---
+                const titleRow = document.createElement('div');
+                titleRow.className = 'set-title-row';
+
+                const title = document.createElement('span');
+                title.className = 'set-title';
+                title.innerHTML = (isOpen ? '▾ ' : '▸ ') + name;
+                title.onclick = () => {
+                    const list = group.querySelector('ul');
+                    const isNowOpen = list.classList.toggle('open');
+                    title.innerHTML = isNowOpen ? `▾ ${name}` : `▸ ${name}`;
+                    if (isNowOpen) {
+                        if (!openSets.includes(name)) openSets.push(name);
+                    } else {
+                        openSets = openSets.filter(n => n !== name);
+                    }
+                    localStorage.setItem('openSetNames', JSON.stringify(openSets));
+                };
+
+                const delSetBtn = document.createElement('button');
+                delSetBtn.className = 'delete-btn';
+                delSetBtn.innerHTML = '×';
+                delSetBtn.title = "Delete Setlist";
+                delSetBtn.onclick = () => deleteSetlist(name);
+
+                titleRow.appendChild(title);
+                titleRow.appendChild(delSetBtn);
+                group.appendChild(titleRow);
+
+                // --- NEW: Songs List with Remove Buttons [-] ---
+                const ul = document.createElement('ul');
+                ul.className = 'set-songs' + (isOpen ? ' open' : '');
+                
+                sets[name].forEach(song => {
+                    const li = document.createElement('li');
+                    li.className = 'set-song-row';
+                    
+                    const a = document.createElement('a');
+                    a.href = `/song/${encodeURIComponent(song.filename)}?key=${encodeURIComponent(song.key)}`;
+                    a.innerText = `${song.title} (${song.key})`;
+                    
+                    if (song.filename === currentFilename) {
+                        a.style.color = 'var(--accent-color)';
+                        a.style.fontWeight = 'bold';
+                    }
+
+                    const delSongBtn = document.createElement('button');
+                    delSongBtn.className = 'delete-btn';
+                    delSongBtn.innerHTML = '-';
+                    delSongBtn.title = "Remove Song";
+                    delSongBtn.onclick = () => removeSongFromSetlist(name, song.filename);
+
+                    li.appendChild(a);
+                    li.appendChild(delSongBtn);
+                    ul.appendChild(li);
+                });
+
+                group.appendChild(ul);
+                container.appendChild(group);
+            });
+        }
+
+        // Modal Logic
+        window.openSetlistModal = async function() {
+            const sets = await fetchSetlists();
+            const select = document.getElementById('setlistSelect');
+            select.innerHTML = '<option value="">-- Create New --</option>';
+            Object.keys(sets).forEach(k => {
+                select.innerHTML += `<option value="${k}">${k}</option>`;
+            });
+            document.getElementById('setlistModal').style.display = 'flex';
+        };
+
+        window.closeSetlistModal = function() {
+            document.getElementById('setlistModal').style.display = 'none';
+        };
+
+        window.saveToSetlist = async function() {
+            const select = document.getElementById('setlistSelect');
+            const input = document.getElementById('newSetName');
+            
+            // Get the name (either from dropdown or input box)
+            let setName = input.value.trim();
+            if (!setName) setName = select.value;
+            
+            if (!setName) return alert("Please name your setlist.");
+
+            // CRITICAL FIX: Ensure we are grabbing the filename correctly from EJS
+            // We use quotes to ensure it's treated as a string, even if empty
+            const currentFilename = "<%= currentSong ? currentSong.filename : '' %>";
+            const currentTitle = "<%= currentSong ? currentSong.metadata.title : '' %>";
+            
+            if (!currentFilename) return alert("No song selected to save!");
+
+            // Data to send to server
+            const payload = {
+                setName: setName,
+                song: {
+                    title: currentTitle,
+                    filename: currentFilename,
+                    key: currentKeyName // The currently transposed key
+                }
+            };
+            
+            console.log("Saving payload:", payload); // Debug to console
+
+            try {
+                const res = await fetch('/api/setlists', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const data = await res.json();
+                if (data.success) {
+                    closeSetlistModal();
+                    input.value = ''; // clear input
+                    refreshSidebar(); // Refresh the list immediately
+                } else {
+                    alert("Failed to save.");
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Error saving setlist.");
+            }
+        };
+
+        // Initialize
+        refreshSidebar();
+        
+        // Search Filter Logic
+        const sInput = document.getElementById('searchInput');
+        const sList = document.querySelectorAll('#songList li');
+        if(sInput) {
+            sInput.addEventListener('input', (e) => {
+                const t = e.target.value.toLowerCase();
+                sList.forEach(i => i.style.display = i.innerText.toLowerCase().includes(t) ? 'block' : 'none');
+            });
+        }
+
+// --- FONT SIZE LOGIC ---
+window.adjustFontSize = function(change) {
+    const container = document.querySelector('.song-container');
+    if (!container) return;
+
+    // Get current size (computed style), default to 16 if fails
+    const currentSize = parseInt(window.getComputedStyle(container).fontSize) || 16;
+    
+    // Calculate new size
+    let newSize = currentSize + change;
+    
+    // Set limits (don't go too small or huge)
+    if (newSize < 10) newSize = 10;
+    if (newSize > 40) newSize = 40;
+
+    // Apply
+    container.style.fontSize = newSize + 'px';
+};
+
+
+
+
+
+    </script>
+</body>
+</html>

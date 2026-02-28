@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  songbook:
+    build: .
+    container_name: songbook-app
+    ports:
+      - "5065:3000"
+    volumes:
+      - ./songs:/app/songs          # Map your local songs folder
+      - ./public/fonts:/app/public/fonts   # Map your fonts (Put UDEVGothic here)
+      - ./setlists.json:/app/setlists.json
+    restart: unless-stopped

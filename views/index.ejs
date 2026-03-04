@@ -88,28 +88,40 @@
 
             <div class="song-container">
                 <% currentSong.renderedBlocks.forEach(block => { %>
-                    <div class="song-section <%= block.type %>">
-                        <% if (block.label) { %>
-                            <div class="section-label"><%= block.label %></div>
-                        <% } %>
-                        
-                        <div class="section-content">
-    <% block.lines.forEach(line => { %>
-        <% if (line.type === 'empty') { %>
-            <div class="empty-line"></div>
-        <% } else if (line.type === 'comment') { %>
-            <div class="comment-line"><%= line.text %></div>
-        <% } else { %>
-            <div class="line-block">
-                <div class="chords" data-original="<%= line.chords %>"><%= line.chords %></div>
-                <div class="lyrics"><%- line.lyrics %></div>
+                    <% 
+                       // NEW: Check if the block actually has content or a label
+                       const hasText = block.lines.some(line => line.type !== 'empty');
+                       if (block.label || hasText) { 
+                    %>
+                        <div class="song-section <%= block.type %>">
+                            
+                            <% if (block.label) { %>
+                                <div class="section-label-container">
+                                    <div class="section-initials">
+                                        <%= block.label.split(' ').map(word => word[0]).join('').toUpperCase() %>
+                                    </div>
+                                    <div class="section-label"><%= block.label %></div>
+                                </div>
+                            <% } %>
+                            
+                            <div class="section-content">
+                                <% block.lines.forEach(line => { %>
+                                    <% if (line.type === 'empty') { %>
+                                        <div class="empty-line"></div>
+                                    <% } else if (line.type === 'comment') { %>
+                                        <div class="comment-line"><%= line.text %></div>
+                                    <% } else { %>
+                                        <div class="line-block">
+                                            <div class="chords" data-original="<%= line.chords %>"><%= line.chords %></div>
+                                            <div class="lyrics"><%- line.lyrics %></div>
+                                        </div>
+                                    <% } %>
+                                <% }) %>
+                            </div>
+                        </div>
+                    <% } %> <% }) %>
             </div>
-        <% } %>
-    <% }) %>
-</div>
-                    </div>
-                <% }) %>
-            </div>
+ 
         <% } else { %>
             <div style="display:grid; place-items:center; height:50%;">
                 <p style="color:#aaa;">Select a song from the sidebar to begin.</p>

@@ -5,7 +5,7 @@
 {time: 4/4}
 
 {comment: intro}
-| [Db] / / / | / / [Dbsus4]-       [Db]  -   [Dbsus4]       :| x2
+| [Db]/ / / / | / / [Dbsus4]/       [Db]    [Dbsus4]/          :| x2
 
 
 {start_of_verse: label="E. Verse"}
@@ -71,9 +71,14 @@ Oh, I am free, Oh, I am free x2
 [Gb2]自由だ [Db]自由だ x2
 {end_of_bridge}
 
-{comment: outro}
+{start_of_outro: label="outro"}
 [Db]Get up, get up, get up
 Get up outta that [Dbsus4]grave  [Db]-     [Dbsus4]
+{end_of_outro}
 
 {comment: Roadmap}
-{c: Intro → E. Verse → E. Pre-Chorus → E. Chorus → Interlude → J. Verse → J. Pre-Chorus → Intro → E. Bridge → J. Bridge → Chorus → Outro}
+Intro → E. Verse → E. Pre-Chorus
+→ E. Chorus → Interlude
+→ J. Verse → J. Pre-Chorus →
+Intro → E. Bridge → J. Bridge →
+Chorus → Outro

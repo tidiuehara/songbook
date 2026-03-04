@@ -1,0 +1,29 @@
+{title: Mele Kalikimaka}
+{artist: Bing Crosby}
+{key: G}
+{tempo: 180}
+{time: 4/4}
+
+{comment: Intro}
+| [G]/ / / / | [G]/ / / / | [G]/ / [F] / | [E7]/ / / / |
+| [Am7]/ / / / | [D7]/ / / / | [G]/ / / / | [C]/ / / / |
+
+{start_of_verse: label="Verse"}
+[G]Mele Kalikimaka is the thing to say
+on a bright Hawaiian Christmas [D7]day.
+That's the island greeting that we send to you
+From the land where palm trees [G]sway.
+[G7]Here we know that Christmas will be [C]green and bright
+the [E7]sun will shine by day and all the [Am7]stars by [D7]night
+[G]Mele Kalikimaka is Hawai[F]i's [E7]way
+to [Am7]say "Merry [D7]Christmas" to [G]you [C] 
+{end_of_verse}
+
+{start_of_verse: label="Ending"}
+to [Am7]say "Merry [D7]Christmas"
+"[Am7]Merry Merry [D7]Christmas"
+"[Am7]Merry Merry Merry [D7]Christmas" to you.
+{end_of_verse}
+
+{comment: Outro}
+| [G]/ / / / | [D7]/ / / / | [G]/ / / / | [G]/ / / / |

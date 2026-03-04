@@ -86,8 +86,8 @@ body {
     widows: 3;
 
     /* --- THE SPACING FIX --- */
-    padding-top: 0;      /* Do NOT use padding for separation */
-    margin-top: 30px;    /* Use Margin to push the whole container down */
+    padding-top: 0px;      /* Do NOT use padding for separation */
+    margin-top: 30px;    /* Use Margin to push the whole container down, both columns will go down*/
 }
 
 .line-block {
@@ -121,73 +121,87 @@ body {
 }
 
 /* =========================================
-   4. SECTION BLOCKS (VERSE / CHORUS)
+   UPDATED SECTION BOX STYLES (NO COLUMN CUT-OFF)
    ========================================= */
 
 .song-section {
-    /* 1. Layout & Spacing */
     width: 100%; 
-    margin-bottom: 25px;
-    padding-left: 10px;
+    margin-bottom: 30px; 
+    padding: 30px 15px 10px 15px; /* Increased top padding to make room inside */
     position: relative;
-    
-    /* 2. THE ALIGNMENT FIX (Use Block, not Inline-Block) */
     display: block;            
     
-    /* 3. PREVENT SPLITTING (The Modern Way) */
-    break-inside: avoid;                 /* Standard */
-    -webkit-column-break-inside: avoid;  /* Chrome/Safari/Edge */
-    page-break-inside: avoid;            /* Firefox/Legacy */
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
     
-    /* 4. FORCE MARGIN CONTAINMENT */
-    /* This stops internal margins from pushing the block down */
-    overflow: hidden; 
-}
-
-/* The Label (Gray Box with Black Text) */
-.section-label {
-    background-color: #e0e0e0;
-    color: #000;
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 4px;
-    
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
-}
-
-/* Chorus: Black Bar, No Background */
-.song-section.chorus {
-    border-left: 4px solid #000;
-    padding-left: 20px;
+    /* 1. Remove the physical border from the parent container */
+    border: none !important;
     background: transparent;
 }
 
-/* Bridge: Gray Bar */
-.song-section.bridge {
-    border-left: 4px solid #ccc;
-    padding-left: 20px;
+/* 2. Draw the border using a pseudo-element, pushed DOWN slightly */
+.song-section::before {
+    content: '';
+    position: absolute;
+    top: 12px; /* Pushes the top line of the border down into the box */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1.5px solid #ccc;
+    border-radius: 12px;
+    z-index: -1; /* Keeps it strictly behind your text */
 }
 
-/* Comment Line (e.g., Intro, Outro) */
-.comment-line {
-    font-family: 'Inter', sans-serif;
+/* 3. The Label sits safely inside the box, no longer negative! */
+.section-label-container {
+    position: absolute;
+    top: 0; /* Safe inside the bounding box. Goodbye cut-off bug! */
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-color); /* This perfectly masks the border underneath */
+    padding: 0 10px;
+    z-index: 1;
+}
+
+.section-initials {
+    width: 30px;  /* circle for the section name abbreviation*/
+    height: 30px;
+    border: 1.5px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
     font-weight: bold;
-    font-style: italic;
-    color: #555;
-    background: #eaeaea;
-    padding: 2px 8px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 15px;
-    border-left: 3px solid #777;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-color); /* Ensures the line doesn't show through the circle */
 }
 
+.section-label {
+    background: transparent;
+    color: #000;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
+/* Adjust the comment line so it lines up with the new internal spacing */
+.comment-line {
+    position: absolute;
+    top: 22px; 
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-style: normal;
+    color: #888;
+    font-size: 0.8rem;
+}
 
 /*.empty-line { height: 1em; }*/
 
@@ -492,7 +506,7 @@ body {
         display: block;
     }
 
-    /* 4. CLEAN UP COLORS (Optional: Forces black/white) */
+    /* 4. CLEAN UP COLORS & MATCH NEW LAYOUT FOR PRINT */
     .chords {
         color: #000 !important; /* Make chords black for printing */
         font-weight: bold;
@@ -500,18 +514,34 @@ body {
     .anchor {
         text-decoration-color: #000 !important;
     }
-    .section-label {
-        border: 1px solid #999; /* Add border to label for clarity */
-        background: #fff !important; /* Remove grey bg */
-    }
-    .song-section.chorus {
-        border-left: 4px solid #000 !important;
+
+    /* Update the Box Border for ink */
+    .song-section::before {
+        border-color: #999 !important; /* Nice dark gray for printing */
     }
 
-    /* 5. PAGE SETUP */
-    @page {
-        margin: 1.5cm; /* Set nice margins */
-        size: auto;
+    /* Remove the old Chorus/Bridge overrides so they stay as rounded boxes */
+    .song-section.chorus, 
+    .song-section.bridge {
+        border-left: none !important; 
+        padding-left: 15px !important; /* Keep padding uniform */
+    }
+
+    /* Make the masking backgrounds WHITE to match the paper */
+    .section-label-container {
+        background: #fff !important; 
+    }
+
+    .section-initials {
+        background: #fff !important; 
+        border-color: #000 !important; /* Crisp black circle */
+        color: #000 !important;
+    }
+
+    .section-label {
+        background: transparent !important; 
+        border: none !important; /* Strip out the old print border */
+        color: #000 !important;
     }
 }
 

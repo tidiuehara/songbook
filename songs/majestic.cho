@@ -1,0 +1,45 @@
+{title: Majestic}
+{artist: Lincoln Brewster}
+{key: D}
+{tempo: 126}
+{time: 4/4}
+
+{comment: Intro}
+| [D] / / / | [A] / / / | [G] / / / | [D] / / / |
+
+{start_of_verse: label="E. Verse"}
+(Oh) [D]Lord, our Lord, how ma[A]jestic is
+Your [G]Name in all the [D]earth
+{end_of_verse}
+
+{start_of_chorus: label="E. Chorus"}
+The [(A)]heavens de[G]clare Your [D]greatness
+The oceans cry [G]out to [Bm]You
+The mountains, they [G]bow down be[D/F#]fore You
+So I'll [Em7]join with the [D/F#]earth (and I'll [G]sing)
+And I'll [G]give my [A]praise to [D]You
+{end_of_chorus}
+
+{start_of_tag: label="tag"}
+[Bm]    [A]
+{end_of_tag}
+
+{start_of_bridge: label="E. Bridge"}
+[D]I will worship [G]you (repeat)
+[D]We will [D/C#]worship [D/F#]you   [G] 
+[Bm7]We will [D/F#]worship [G]you   [A] 
+{end_of_bridge}
+
+{start_of_verse: label="J. Verse"}
+[D]主の主 あな[A]たの名
+ほ[G]めたたえ[D]る
+{end_of_verse}
+
+{start_of_chorus: label="J. Chorus"}
+[(A)]天は   [G]歌い   [D]出し
+海は[G]震え[Bm]る
+山はあ[G]なたの[D/F#]名に
+ひれ[Em7]ふし  [D/F#]皆
+声[G]上げ （た[A]たえ[D]る）
+{end_of_chorus}
+

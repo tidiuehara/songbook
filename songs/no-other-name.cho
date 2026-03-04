@@ -1,0 +1,56 @@
+{title: No Other Name}
+{artist: Planetshakers}
+{key: E}
+{tempo: 128}
+{time: 4/4}
+
+{start_of_verse: label="E. Verse"}
+[E]Praise the [F#m7]Name above all [E/G#]names
+the [Bm7]One who [E]reigns fo[A2]rever
+[E/G#]still the same
+[F#m7]Praise the [B]Name
+[E]Jesus, [F#m7]Name above all [E/G#]names
+the [Bm7]One who [E]reigns fo[A2]rever
+[E/G#]still the same
+[F#m7]Praise the [D]Name
+{end_of_verse}
+
+{start_of_chorus: label="E. Chorus"}
+No other [E]name that's higher
+No other [A2]name that's stronger
+No other [C#m7]name,
+forever I will [A2]praise the [B]Name
+No other [E]name can heal us
+No other [A2]name can free us,
+No other [C#m7]name so precious
+Let's [A2]praise the [B]Name
+{end_of_chorus}
+
+{start_of_verse: label="J. Verse"}
+[E]たた え[F#m7]よう  素[E/G#]晴ら  [Bm7]しいそ[E]の御名[A2]を
+変[E/G#]わらない  [F#m7]御名 [B]を
+[E]ジーザス、[F#m7]全てに  [E/G#]勝る  [Bm7]永遠[E]の名[A2]を
+変[E/G#]わらない [F#m7]御名 [D]を
+{end_of_verse}
+
+{start_of_chorus: label="J. Chorus"}
+その名[E]の 他に 力あ[A2]る名はない 
+その名だけ [C#m7]永遠にた[A2]たえ[B]よう
+その名は[E] 癒し、私達[A2]を自由に 
+素晴らしい [C#m7]その名 た[A2]たえ[B]よう
+{end_of_chorus}
+
+{start_of_bridge: label="E. Bridge"}
+[A2]Every nation,
+[C#m7]All cre - [B/D#]a  ——  [E]tion,
+[F#m7]We proclaim [C#m7]Your [A2]Name
+(x4)
+[A2]Jesus, [C#m7]Jesus, [B/D#]      [E]
+[F#m7]Jesus, no [C#m7]sweeter [A2]name  ([B]before chorus)
+(x2)
+{end_of_bridge}
+
+{comment: chorus progression}
+[E]      [F#m]      [E/G#]      [A2]
+[E/B]      [Cdim]      [C#m7]      [B/D#]
+[E]      [A][(F#m7)]         [B]      [E]

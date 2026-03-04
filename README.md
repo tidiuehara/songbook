@@ -6,7 +6,7 @@ A self-hosted, responsive web application for musicians, worship teams, and band
 
 ## ✨ Features
 
-* **Smart Transposition:** Transpose songs instantly. The custom rendering engine ensures chords perfectly maintain their alignment over lyrics, even when chord lengths change (e.g., `C` to `C#`), and fully supports complex slash chords (e.g., `D/F#`).
+* **Smart Transposition:** Transpose songs instantly. The custom rendering engine ensures chords perfectly maintain their alignment over lyrics, even when chord lengths change (e.g., `C` to `Db`), and fully supports complex slash chords (e.g., `D/F#`).
 * **Setlist Management:** Create custom setlists, add transposed songs directly to them, and easily manage or delete them. Setlists are saved persistently.
 * **Responsive Stage UI:** * **Desktop:** Left sidebar navigation, 2-column song view.
   * **Tablet (iPad):** Space-saving top split-menu, 2-column song view.

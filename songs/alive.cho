@@ -1,0 +1,49 @@
+{title: Alive}
+{artist: Hillsong Young & Free}
+{key: E}
+{tempo: 132}
+{time: 4/4}
+
+{comment: Chord progression}
+[C#m]|   [G#m]    [A]|     [A]|    [C#m]    [B]|      |
+
+{start_of_verse: label="J.Verse"}
+傷ついたこころ あなたは引き上げて
+救いのその手で 今生まれ変わった
+言葉にできない 終わらない主の恵み
+ずっとついていく あなたを見つづける
+{end_of_verse}
+
+{start_of_prechorus: label="J.Pre-Chorus"}
+そう あなただけが 自由
+WE LIFT YOU HIGHER, LIFT YOU HIGHER その愛 愛 終わらない OH OH OH
+{end_of_prechorus}
+
+{start_of_chorus: label="J.Chorus"}
+主は生きている 代わりのはない あなただけ 自由を くれる
+{end_of_chorus}
+
+{start_of_verse: label="E.Verse"}
+In the midst of the darkest night
+Let Your love be the shining light
+Breaking chains that were holding me
+You sent Your Son down and set me free
+
+Everything of this world will fade
+I'm pressing on till I see Your face
+I will live that Your will be done
+I won't stop till Your Kingdom come
+{end_of_verse}
+
+{start_of_prechorus: label="E.Pre-Chorus"}
+'Cause You are, You are, You are my freedom
+We lift You higher, lift You higher
+Your love, Your love, Your love never ending Oh oh oh
+{end_of_prechorus}
+
+{start_of_chorus: label="E.Chorus"}
+You are alive in us
+Nothing can take Your place
+You are all we need
+Your love has set us free
+{end_of_chorus}

@@ -1,0 +1,43 @@
+{title: Beautiful One}
+{artist: Tim Hughes}
+{key: D}
+{tempo: 120}
+{time: 4/4}
+
+{comment: Intro}
+[G]/   [A]/   [Bm]/   [A/C#]/
+[G]/   [A]/   [D]/   /
+
+{start_of_verse: label="Verse EN"}
+[G]Wonderful, so [A]wonderful Is Your [D/F#]unfailing love
+Your [G]cross has spoken [A]mercy over [Bm]me
+No [G]eye has seen, No [A]ear has heard
+No [D/F#]heart could fully know
+How [G]glorious, how [A]beautiful You [D]are
+{end_of_verse}
+
+{start_of_chorus: label="Chorus EN"}
+Beautiful [G]One, I [A]love
+Beautiful [G]One, I [A]adore
+Beautiful [G]One, my [A]soul must [D]sing
+{end_of_chorus}
+
+
+{start_of_verse: label="Verse JP"}
+[G]美しい、[A]美しい [D/F#]あなたの愛
+[G]十字架 [A]胸に刺[Bm]さる
+[G]見るのも [A]聞くのも [D/F#]難しいほど
+[G]偉大[A]な 全能の [D]主
+{end_of_verse}
+
+{start_of_chorus: label="Chorus JP"}
+美[G]しい主[A]よ、あな[G]たをあか[A]め
+心[G]ささ[A]げ 歌[D]う
+{end_of_chorus}
+
+
+{start_of_bridge: label="Bridge EN"}
+You [G]opened my eyes to Your [A]wonders anew
+You [Bm]captured my heart with this [A/C#]love
+Because [G]nothing on Earth is as [A]beautiful as [D]You
+{end_of_bridge}

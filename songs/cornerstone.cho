@@ -1,0 +1,56 @@
+{title: Cornerstone}
+{artist: Hillsong Worship}
+{key: C}
+{tempo: 71}
+{time: 4/4}
+
+{comment: Intro}
+[C]|    |   [Am]|    |   [F]|    [G]|    |
+
+{start_of_verse: label="E. Verse"}
+[C] My hope is built on nothing less
+[F] Than Jesus’ blood and [G]righteousness
+[Am] I dare not trust the [Am/G]sweetest frame
+[F] But wholly [G]trust in [C]Jesus’ name
+{end_of_verse}
+
+{start_of_chorus: label="E. Chorus"}
+Christ a - [F]lone [Am]corner - [G]stone
+[C/E]Weak made [F]strong in the [Am]Saviour's [G]love
+[C]Through the [F]storm [Am]He is [G]Lord Lord of [C]all
+{end_of_chorus}
+
+{start_of_verse: label="J. Verse"}
+[C] 暗闇、嵐[F]がふりかか[G]ろうとも
+[Am] 変わらぬ[Am/G]恵みと [F]愛に[G]頼り[C]ます [F]愛に[G]頼り[C]ます
+{end_of_verse}
+
+{start_of_chorus: label="J. Chorus"}
+嵐[F]の  [Am]中も[G]
+揺[C/E]るがぬ[F]  い[Am]しず[G]え
+[C]主の[F]愛、わ[Am]たし[G]を強め[C]る
+{end_of_chorus}
+
+{comment: Interlude 2}
+[C]|    |   [Am]|    |   [F]|    [G]|    |
+    主の主  主の主
+
+{comment: Interlude 3}
+[C]|    [C]|    [C]|    [C]|    |
+
+{start_of_verse: label="E. Verse 2"}
+[C] When He shall come with trumpet sound
+[F] Oh may I then in [G]Him be found
+[Am] Dressed in His righteous[Am/G]ness alone
+[F] Faultless [G]stand before[C] the throne
+{end_of_verse}
+
+{comment: Interlude 4}
+[F]|  [Am]   [G]|  [C/E]    [F]|  [Am]    [G]|   [C]  |
+[F]|  [Am]   [G]|      [C]|      |     |
+{comment: Outro}
+[C]|    [C]|    [C]|    [C]|    |
+
+
+{comment: Roadmap}
+{comment: Intro -> E. Verse -> E. Verse -> E. Chorus -> J. Verse -> J. Chorus -> Interlude 2 -> J. Chorus x2 -> Interlude 3 -> E. Verse 2 -> Interlude 4 -> E. Chorus -> E. Chorus -> Outro}

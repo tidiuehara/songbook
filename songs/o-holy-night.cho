@@ -1,0 +1,55 @@
+{title: O Holy Night}
+{artist: Traditional}
+{key: F}
+{tempo: 65}
+{time: 6/8}
+
+{comment: Intro}
+| [F]/// /// | [C]/// /// | [Dm]/// /// | [Bb]/// /// |
+
+{start_of_verse: label="E. Verse 1"}
+[F]O holy [C]night the [Bb]stars are brightly [Dm]shining
+It is the [Bb]night of our [C]dear Saviour's [F]birth
+[F]Long lay the [C]world in [Bb]sin and error [Dm]pining
+Till He app[Am]eared and the [E]soul felt its [Am]worth
+A thrill of hope the [F]weary world rejoices
+[C]For yonder breaks, a [F]new and glorious morn
+{end_of_verse}
+
+{start_of_chorus: label="E. Chorus 1"}
+[Dm]Fall on your [Am]knees
+O [Gm]hear the angel [Dm]voice[C/E]s
+[F]O [C]night [Dm]divin[Bb]e
+[F]O night[C] when Christ was [F]born
+[Bb]O nigh[C/Bb]t di[F]vin[Bb]e
+O [F/C]night, O [C]night di[F]vine
+{end_of_chorus}
+
+{start_of_verse: label="Verse 2"}
+[F]輝 [C]く星 [Bb]を 頼り[Dm]に
+旅せ[Bb]し 博[C]士の[F]ごと
+[F]信仰[C]の光[Bb]により[Dm]て
+我ら[Am]もみま[E]えに立[Am]つ
+[C]うまぶねに[F]眠る御子は
+[C]君の君 [F]主の主なり
+{end_of_verse}
+
+{start_of_chorus: label="J. Chorus 2"}
+[Dm]我ら[Am]の 重[Gm]荷を[Dm]担い[C/E]
+[F]安 [C]き [Dm]をた[Bb]まう[F]ため[C]にと[F]
+[Bb]来た [C/Bb]れる [F]神 [Bb]の [F/C]子なり[C]   [F] 
+{end_of_chorus}
+
+{start_of_chorus: label="E. Chorus 3"}
+[Dm]Christ is the [Am]Lord
+[Gm]O praise His Name [Dm]forever[C/E]
+[F]His [C]power an[Dm]d glor[Bb]y
+[F]Ever[C]more procla[F]im
+{end_of_chorus}
+
+{comment: Song Map}
+Verse 1 -> Chorus 1 ->
+Verse 2 -> Chorus 2 ->
+Chorus 3 (quiet) ->
+Chorus 3 (build up) ->
+Chorus 1 (loud) -> Tag x3

@@ -1,8 +1,9 @@
 {title: Angels We Have Heard On High}
 {key: G}
+{time: 4/4}
 
-{comment: Intro}
-[G]/    / [C]   [Em7]/    [C]/
+{comment: Intro} 
+| [G]//// | [C]//// | [Em7]//// | [C]//// ║
 
 {start_of_verse: label="Verse 1"}
 [G]Angels we have heard on high

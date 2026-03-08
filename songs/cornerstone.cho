@@ -5,7 +5,8 @@
 {time: 4/4}
 
 {comment: Intro}
-[C]|    |   [Am]|    |   [F]|    [G]|    |
+| [C]//// | //// | [Am]//// | //// |
+| [F]//// | [G]//// ║
 
 {start_of_verse: label="E. Verse"}
 [C] My hope is built on nothing less
@@ -31,12 +32,13 @@ Christ a - [F]lone [Am]corner - [G]stone
 [C]主の[F]愛、わ[Am]たし[G]を強め[C]る
 {end_of_chorus}
 
-{comment: Interlude 2}
-[C]|    |   [Am]|    |   [F]|    [G]|    |
-    主の主  主の主
+{start_of_interlude: label="Interlude 2"}
+| [C]//// | // 主の | [Am]主 /// | // 主の |
+| [F]主 /// | [G]//// ║
+{end_of_interlude}
 
 {comment: Interlude 3}
-[C]|    [C]|    [C]|    [C]|    |
+ | [C]//// | //// | //// | //// ║
 
 {start_of_verse: label="E. Verse 2"}
 [C] When He shall come with trumpet sound
@@ -45,12 +47,23 @@ Christ a - [F]lone [Am]corner - [G]stone
 [F] Faultless [G]stand before[C] the throne
 {end_of_verse}
 
+{start_of_interlude}
 {comment: Interlude 4}
-[F]|  [Am]   [G]|  [C/E]    [F]|  [Am]    [G]|   [C]  |
-[F]|  [Am]   [G]|      [C]|      |     |
+| [F]/ / [Am]/ / | [G]/ / [C/E]/ / |
+| [F]/ / [Am]/ / | [G]/ / [C]/ / |
+| [F]/ / [Am]/ / | [G]/ / | [C]/ / |
+{end_of_interlude}
+
 {comment: Outro}
-[C]|    [C]|    [C]|    [C]|    |
+ | [C]//// | //// | //// | //// ║
 
 
-{comment: Roadmap}
-{comment: Intro -> E. Verse -> E. Verse -> E. Chorus -> J. Verse -> J. Chorus -> Interlude 2 -> J. Chorus x2 -> Interlude 3 -> E. Verse 2 -> Interlude 4 -> E. Chorus -> E. Chorus -> Outro}
+{start_of_roadmap}
+{c: Roadmap}
+Intro -> E. Verse -> E. Verse ->
+E. Chorus -> J. Verse -> J. Chorus ->
+Interlude 2 -> J. Chorus x2 ->
+Interlude 3 -> E. Verse 2 ->
+Interlude 4 -> E. Chorus -> E. Chorus ->
+Outro
+{end_of_roadmap}

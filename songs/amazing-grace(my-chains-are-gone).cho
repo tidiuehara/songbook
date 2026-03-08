@@ -5,7 +5,7 @@
 {time: 4/4}
 
 {comment: Intro}
-[G5]| / / / [G2]| / / / :||
+| [G5]/ / / / | [G2]/ / / / ║
 
 {start_of_verse: label="Verse 1"}
 A - [G2]mazing grace how [Gsus]sweet the [G2]sound
@@ -29,7 +29,7 @@ Unending [Am7]love [Dsus] amazing [G5]grace
 {end_of_chorus}
 
 {comment: Instrumental}
-| ([G5]) / / / | [G2] / / / :||
+| [(G5)]/ / / / | [G2]/ / / / ║
 
 {start_of_verse: label="Verse 3"}
 The [G2]Lord has promised [Gsus]good to [G2]me

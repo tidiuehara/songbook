@@ -6,41 +6,57 @@
 {time: 4/4}
 
 {comment: INTRO}
-[D]/    [Bm]/    [F#m]/    [G]/    [x2]
+| [D]//// | [Bm]//// | [F#m]//// | [G]//// ║ (x2)
 
-{start_of_verse: label="VERSE 1"}
-[D]Your love is devoted [Em]like a ring of solid [G]gold
-Like a vow that is tested [F#m]like a [A]covenant of [D]old
-And your love is enduring [Em]through the winter [G]rain
-And beyond the horizon [F#m]with [A]mercy for to[G]day
+{start_of_verse: label="E. Verse 1"}
+[D]Your love is devoted
+[Em] like a ring of solid [G]gold
+Like a vow that is tested
+[F#m] like a [A]covenant of [D]old
+And your love is enduring
+[Em] through the winter [G]rain
+And beyond the horizon
+[F#m] with [A]mercy for to[G]day
 {end_of_verse}
 
-{start_of_prechorus: label="PRE-CHORUS"}
-Faithful You have [D]been and faithful you will [A]be
-You pledge yourself to [Em]me and it’s why I sing
+{start_of_prechorus: label="E. Pre-Chorus"}
+Faithful You have [D]been
+and faithful you will [A]be
+You pledge yourself to [Em]me
+and it’s why I sing
 {end_of_prechorus}
 
-{start_of_chorus: label="CHORUS"}
-Your [G]praise will ever be on my [D]lips, ever be on my lips
-Your [Bm]praise will ever be on my [A]lips, ever be on my lips
+{start_of_chorus: label="E. Chorus"}
+Your [G]praise will ever be on my [D]lips,
+ever be on my lips
+Your [Bm]praise will ever be on my [A]lips,
+ver be on my lips
 {end_of_chorus}
 
-{start_of_verse: label="J. Verse"}
-[D]その優し[Em]さ わたしを[G]造ろう 弱さひきよ[F#m]せ 主は[A]強さ注ご[D]う
-輝くほど[Em]の 美しさへ[G]と 造りかえら[F#m]れ あ[A]なたのそば[G]に
+{start_of_verse: label="J. Verse 2"}
+[D] その優しさ[Em] わたしを造ろ[G]う
+弱さひきよせ[F#m] 主は[A]強さ注ご[D]う
+輝くほどの[Em] 美しさへ[G]と
+造りかえられ[F#m] あ[A]なたのそば[G]に
 {end_of_verse}
 
-{start_of_prechorus: label="J. Pre Chorus"}
-罪、恥さえ[D]も 知っていてな[A]お わたしの名を呼[Em]ぶ あなたへ歌う
+{start_of_prechorus: label="J. Pre-Chorus"}
+罪、恥さえも[D] 知っていてなお[A] 
+わたしの名を呼ぶ[Em] あなたへ歌う
 {end_of_prechorus}
 
 {start_of_chorus: label="J. Chorus"}
-[G]その御名を讃[D]える 言葉を今 [Bm]強く想いと共[A]に この声にのせ x2
+そ[G]の御名を讃え[D]る 言葉を今
+[Bm]強く想いと共[A]に この声にのせ (x2)
 {end_of_chorus}
 
-{start_of_bridge: label="BRIDGE"}
-[D]You will be praised [A]You will be praised
-[Bm]With angels and saints we sing [G]worthy are You Lord
-[D]You will be praised [Em]You will be praised
-[Bm]With angels and saints we sing [G]worthy are You Lord
+{start_of_bridge: label="E. Bridge"}
+[D] You will be praised
+[A] You will be praised
+[Bm] With angels and saints
+We sing [G]worthy are You Lord
+[D] You will be praised
+[Em] You will be praised
+[Bm] With angels and saints 
+We sing [G]worthy are You Lord
 {end_of_bridge}

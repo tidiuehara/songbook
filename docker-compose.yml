@@ -6,7 +6,7 @@ services:
     ports:
       - "5065:3000"
     volumes:
-      - ./songs:/app/songs          # Map your local songs folder
-      - ./public/fonts:/app/public/fonts   # Map your fonts (Put UDEVGothic here)
-      - ./setlists.json:/app/setlists.json
+      - ./songs:/app/songs                 # Map your local songs folder
+      - ./public:/app/public               # MAP THE ENTIRE PUBLIC FOLDER (CSS & Fonts)
+      - ./setlists.json:/app/setlists.json # Map your setlists
     restart: unless-stopped

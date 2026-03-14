@@ -9,8 +9,10 @@ const PORT = 3000;
 // NEW: Allow server to read JSON data from the "Save" button
 app.use(express.json()); 
 
+
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.set('views', path.join(__dirname, 'views')); // Explicitly define the views folder
+app.use(express.static(path.join(__dirname, 'public'))); // Explicitly define the public folder
 
 // --- NEW: SETLISTS API ---
 const SETLIST_FILE = path.join(__dirname, 'setlists.json');
